@@ -1,7 +1,7 @@
 {
 	"Responder": {
 		"protocol": "https",
-		"oldip4": "213.87.104.6",
+		"oldip4": "127.0.0.1",
 		"confURL": "config"
 	},
 	"newconfig": {
