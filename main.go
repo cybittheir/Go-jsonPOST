@@ -59,13 +59,14 @@ func main() {
 		testport = "21"
 	}
 
-	ResponerIPAddr := fmt.Sprintf("%s:%s", confResult["Responder"]["oldip4"], testport)
+	ResponderIPAddr := fmt.Sprintf("%s:%s", confResult["Responder"]["oldip4"], testport)
 	httpposturl := fmt.Sprintf("%s://%s/%s", confResult["Responder"]["protocol"], confResult["Responder"]["oldip4"], confResult["Responder"]["confURL"])
 
 	jsonPost, err := json.Marshal(result["newconfig"])
 
-	fmt.Println("Trying connect to " + ResponerIPAddr)
-	tcpAddr, _ := net.ResolveTCPAddr("tcp4", ResponerIPAddr)
+	fmt.Println("Trying connect to " + ResponderIPAddr)
+
+	tcpAddr, _ := net.ResolveTCPAddr("tcp4", ResponderIPAddr)
 
 	conn, err := net.DialTCP("tcp", nil, tcpAddr)
 
@@ -73,7 +74,7 @@ func main() {
 
 		conn.Close()
 
-		fmt.Println("Connected successful to " + ResponerIPAddr)
+		fmt.Println("Connected successful to " + ResponderIPAddr)
 
 		fmt.Println("Map of new config: ", result["newconfig"])
 
@@ -104,7 +105,7 @@ func main() {
 
 	} else {
 
-		fmt.Println("No connection to " + ResponerIPAddr)
+		fmt.Println("No connection to " + ResponderIPAddr)
 
 	}
 
